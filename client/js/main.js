@@ -8,8 +8,7 @@ $(document).ready(function(){
                 userName : 'anonymous'
             }
             
-            var tweet = JSON.stringify(formData);
-            console.log(tweet);
+            var tweet = '\n'+ JSON.stringify(formData);
             
             $.ajax({
                 type: 'POST',
@@ -17,13 +16,15 @@ $(document).ready(function(){
                 data: tweet,
                 dataType: 'json' 
             }).then(function(success){
-                console.log(success);  
-            }), function(err){
+                console.log('hey');
+            }, function(err){
+                console.log('error');
                 console.log(err);
-            }
+            });
 	}
     $('#post').click(function(){
         postData();
+        $('#text').val('');
     });
     
 	function getData() {
