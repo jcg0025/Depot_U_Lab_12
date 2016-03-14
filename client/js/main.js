@@ -2,22 +2,29 @@ $(document).ready(function(){
 /*Using document ready runs code only after the DOM is ready for js code to run more on that here: https://learn.jquery.com/using-jquery-core/document-ready */
     
     function postData() {
-        $('form').submit(function(){
+           
             var formData = {
-                text: $('input[name=newTweet]').val(),
+                text: $('#text').val(),
                 userName : 'anonymous'
             }
             
             var tweet = JSON.stringify(formData);
+            console.log(tweet);
             
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:3000/messages',
                 data: tweet,
                 dataType: 'json' 
-            })
-        })
+            }).then(function(success){
+                console.log(success);  
+            }), function(err){
+                console.log(err);
+            }
 	}
+    $('#post').click(function(){
+        postData();
+    });
     
 	function getData() {
 		/*This function should make a get request from 'database', parse the data and prepend each to the page*/
