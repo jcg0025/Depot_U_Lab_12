@@ -17,11 +17,11 @@ $(document).ready(function(){
             }).success(function(success){
                 console.log('hey');
                 
-                $('.tweetContainer').prepend('<br>');
+                $('.tweetContainer').prepend('<br><br>');
                 $('.tweetContainer').prepend(formData.text);
                 $('.tweetContainer').prepend('<br>');
                 $('.tweetContainer').prepend(formData.userName);
-                $('.tweetContainer').prepend('<br>');
+                
                 
             }).error(function(err){
                 console.log('error');
@@ -46,7 +46,6 @@ $(document).ready(function(){
                results.push(item);
             })
             for (var i = 0; i < results.length; i++){
-                $('.tweetContainer').append('<br>');
                 $('.tweetContainer').append(results[i].userName);
                 $('.tweetContainer').append('<br>');
                 $('.tweetContainer').append(results[i].text);
