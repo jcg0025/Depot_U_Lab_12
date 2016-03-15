@@ -13,11 +13,17 @@ $(document).ready(function(){
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:3000/messages',
-                data: tweet,
-                dataType: 'json' 
-            }).then(function(success){
+                data: tweet
+            }).success(function(success){
                 console.log('hey');
-            }, function(err){
+                
+                $('.tweetContainer').prepend('<br>');
+                $('.tweetContainer').prepend(formData.text);
+                $('.tweetContainer').prepend('<br>');
+                $('.tweetContainer').prepend(formData.userName);
+                $('.tweetContainer').prepend('<br>');
+                
+            }).error(function(err){
                 console.log('error');
                 console.log(err);
             });
@@ -40,6 +46,7 @@ $(document).ready(function(){
                results.push(item);
             })
             for (var i = 0; i < results.length; i++){
+                $('.tweetContainer').append('<br>');
                 $('.tweetContainer').append(results[i].userName);
                 $('.tweetContainer').append('<br>');
                 $('.tweetContainer').append(results[i].text);
